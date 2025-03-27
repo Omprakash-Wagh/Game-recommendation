@@ -1,0 +1,21 @@
+game_id,title,genre,price,rating,num_ratings,popularity_score,combined_popularity,on_sale,sale_price,sale_status
+XBOX00061,Minecraft,Adventure,69.99,2.4,4148,99.42,0.8050732198601931,False,69.99,Regular Price
+XBOX00095,FIFA 23,RPG,69.99,4.0,4153,62.0,0.6854394599040637,False,69.99,Regular Price
+XBOX00097,Madden NFL 23,Sports,59.99,3.3,4442,56.4,0.6797945064625499,False,59.99,Regular Price
+XBOX00055,Assassin's Creed Valhalla,Puzzle,59.99,2.3,3589,100.35,0.6604038972539826,False,59.99,Regular Price
+XBOX00006,Super Champions,Simulation,29.99,4.5,4986,111.62,0.5743589743589743,True,24.0,On Sale
+XBOX00086,Destiny 2,Simulation,39.99,4.3,3127,64.4,0.5646925561191467,False,39.99,Regular Price
+XBOX00098,The Elder Scrolls V: Skyrim,RPG,29.99,3.9,2065,61.2,0.53300816401543,False,29.99,Regular Price
+XBOX00031,Gears 5,Puzzle,49.99,3.1,3991,54.8,0.5287919852279426,False,49.99,Regular Price
+XBOX00067,Star Wars Jedi: Fallen Order,Action,39.99,3.4,909,54.47,0.5206918540354281,True,30.86,On Sale
+XBOX00056,Sea of Thieves,Sports,19.99,1.7,3041,43.6,0.5095185266235548,False,19.99,Regular Price
+XBOX00096,NBA 2K23,Sports,69.99,4.7,3654,88.23,0.48520090997971355,False,69.99,Regular Price
+XBOX00010,Destiny 2,RPG,39.99,3.4,3429,107.99,0.47461600472638676,False,39.99,Regular Price
+XBOX00023,Extreme Legends,Racing,19.99,4.1,3047,96.91,0.46856535968741736,False,19.99,Regular Price
+XBOX00046,FIFA 23,Shooter,49.99,5.0,4647,70.0,0.46507719873863196,False,49.99,Regular Price
+XBOX00082,Legendary Champions,Strategy,59.99,4.9,4787,69.2,0.4603833888833222,False,59.99,Regular Price
+XBOX00099,Extreme Champions,RPG,19.99,4.0,4730,83.53,0.4570942319893969,True,10.9,On Sale
+XBOX00034,Legendary Quest,Sports,69.99,4.9,4540,69.2,0.45527902847827983,False,69.99,Regular Price
+XBOX00051,Super Quest,RPG,39.99,4.8,4902,68.4,0.45517294335948577,False,39.99,Regular Price
+XBOX00049,Star Wars Jedi: Fallen Order,Racing,59.99,3.9,2138,99.83,0.4484985668419965,False,59.99,Regular Price
+XBOX00057,Epic Champions,Action,39.99,3.6,4174,88.64,0.4407967922661219,True,25.24,On Sale

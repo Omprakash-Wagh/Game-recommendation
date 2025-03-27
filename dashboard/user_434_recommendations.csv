@@ -1,0 +1,3 @@
+game_id,title,genre,predicted_interest,price,rating,popularity_score,on_sale,sale_price,discount_rate,sale_status
+XBOX00095,FIFA 23,RPG,0.1541144,69.99,4.0,62.0,False,69.99,0.0,Regular Price
+XBOX00055,Assassin's Creed Valhalla,Puzzle,0.0769025,59.99,2.3,100.35,False,59.99,0.0,Regular Price

@@ -1,0 +1,4 @@
+game_id,title,genre,predicted_interest,price,rating,popularity_score,on_sale,sale_price,discount_rate,sale_status
+XBOX00061,Minecraft,Adventure,0.0769025,69.99,2.4,99.42,False,69.99,0.0,Regular Price
+XBOX00086,Destiny 2,Simulation,0.0769025,39.99,4.3,64.4,False,39.99,0.0,Regular Price
+XBOX00098,The Elder Scrolls V: Skyrim,RPG,0.0769025,29.99,3.9,61.2,False,29.99,0.0,Regular Price

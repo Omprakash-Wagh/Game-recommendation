@@ -1,0 +1,4 @@
+game_id,title,genre,predicted_interest,price,rating,popularity_score,on_sale,sale_price,discount_rate,sale_status
+XBOX00077,Battlefield 2042,Adventure,0.15412632,59.99,3.2,54.25,False,59.99,0.0,Regular Price
+XBOX00055,Assassin's Creed Valhalla,Puzzle,0.0769025,59.99,2.3,100.35,False,59.99,0.0,Regular Price
+XBOX00098,The Elder Scrolls V: Skyrim,RPG,2.6122358e-05,29.99,3.9,61.2,False,29.99,0.0,Regular Price
