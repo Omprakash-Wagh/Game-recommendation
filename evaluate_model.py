@@ -282,35 +282,58 @@ def load_model():
         return None
 
 def calculate_recommendation_metrics(recommendations):
-    """
-    Calculate recommendation quality metrics
-    """
-    logging.info("Calculating recommendation metrics...")
+    """Calculate recommendation quality metrics"""
+    try:
+        print("\nCalculating recommendation metrics...")
+        
+        # Check if we have the necessary columns
+        required_cols = ['user_id', 'game_id', 'predicted_interest']
+        missing_cols = [col for col in required_cols if col not in recommendations.columns]
+        
+        if missing_cols:
+            print(f"Error: Missing required columns in recommendations: {missing_cols}")
+            return
+        
+        # Number of unique users and games
+        unique_users = recommendations['user_id'].nunique()
+        unique_games = recommendations['game_id'].nunique()
+        
+        print(f"Unique users with recommendations: {unique_users}")
+        print(f"Unique games recommended: {unique_games}")
+        
+        # Average number of recommendations per user
+        recs_per_user = recommendations.groupby('user_id').size().mean()
+        print(f"Average recommendations per user: {recs_per_user:.2f}")
+        
+        # Diversity metrics - only calculate if genre column exists
+        if 'genre' in recommendations.columns:
+            # Genre diversity
+            genre_diversity = recommendations['genre'].nunique() / unique_games
+            print(f"Genre diversity: {genre_diversity:.2f}")
+            
+            # Calculate entropy of genre distribution
+            genre_entropy = calculate_entropy(recommendations['genre'])
+            print(f"Genre entropy (higher = more diverse): {genre_entropy:.4f}")
+        else:
+            print("Genre column not found in recommendations. Skipping genre diversity metrics.")
+        
+        # Interest score distribution
+        interest_mean = recommendations['predicted_interest'].mean()
+        interest_std = recommendations['predicted_interest'].std()
+        interest_min = recommendations['predicted_interest'].min()
+        interest_max = recommendations['predicted_interest'].max()
+        
+        print(f"\nPredicted interest statistics:")
+        print(f"Mean: {interest_mean:.4f}")
+        print(f"Std Dev: {interest_std:.4f}")
+        print(f"Min: {interest_min:.4f}")
+        print(f"Max: {interest_max:.4f}")
+        
+        return True
     
-    metrics = {}
-    
-    # Average predicted interest score
-    metrics['avg_interest_score'] = recommendations['predicted_interest'].mean()
-    
-    # Interest score distribution
-    metrics['min_interest'] = recommendations['predicted_interest'].min()
-    metrics['max_interest'] = recommendations['predicted_interest'].max()
-    metrics['median_interest'] = recommendations['predicted_interest'].median()
-    
-    # Genre diversity
-    metrics['genre_count'] = recommendations['genre'].nunique()
-    metrics['genre_entropy'] = calculate_entropy(recommendations['genre'])
-    
-    # Average recommendations per user
-    metrics['avg_recs_per_user'] = recommendations.groupby('user_id').size().mean()
-    
-    # Print metrics
-    logging.info(f"Average interest score: {metrics['avg_interest_score']:.4f}")
-    logging.info(f"Interest score range: {metrics['min_interest']:.4f} - {metrics['max_interest']:.4f}")
-    logging.info(f"Genre diversity (entropy): {metrics['genre_entropy']:.4f}")
-    logging.info(f"Average recommendations per user: {metrics['avg_recs_per_user']:.2f}")
-    
-    return metrics
+    except Exception as e:
+        print(f"Error in recommendation metrics calculation: {e}")
+        return False
 
 def calculate_entropy(series):
     """
@@ -493,37 +516,55 @@ def evaluate_model():
         
         # Load game data
         game_data = load_game_data()
+        if game_data is None:
+            return
         
-        # Load model (for potential future use)
+        # Load model
         model = load_model()
+        if model is None:
+            return
+        
+        # Merge game data with recommendations to get genre information
+        if 'game_id' in recommendations.columns and 'game_id' in game_data.columns:
+            recommendations = recommendations.merge(
+                game_data[['game_id', 'genre', 'price', 'rating', 'popularity_score']], 
+                on='game_id', 
+                how='left'
+            )
+            logging.info("Added game metadata to recommendations.")
         
         # Calculate recommendation metrics
-        metrics = calculate_recommendation_metrics(recommendations)
+        calculate_recommendation_metrics(recommendations)
         
-        # Create visualizations
+        # Visualize recommendations
         visualize_recommendations(recommendations, game_data)
         
         # Simulate user satisfaction
         satisfaction = simulate_user_satisfaction(recommendations)
         
         # Print summary
-        logging.info("\n" + "="*50)
-        logging.info("Xbox Game Recommendation Evaluation Summary")
+        logging.info("="*50)
+        logging.info("RECOMMENDATION SYSTEM EVALUATION SUMMARY")
         logging.info("="*50)
         logging.info(f"Generated recommendations for {recommendations['user_id'].nunique()} users")
         logging.info(f"Total recommendations: {len(recommendations)}")
-        logging.info(f"Average interest score: {metrics['avg_interest_score']:.4f}")
-        logging.info(f"Genre diversity (entropy): {metrics['genre_entropy']:.4f}")
-        logging.info(f"Simulated user satisfaction: {satisfaction['avg_satisfaction']:.2f}/5.0")
+        logging.info(f"Average interest score: {recommendations['predicted_interest'].mean():.4f}")
+        
+        # Only calculate genre entropy if genre column exists
+        if 'genre' in recommendations.columns:
+            logging.info(f"Genre diversity (entropy): {calculate_entropy(recommendations['genre']):.4f}")
+        
+        if satisfaction and 'avg_satisfaction' in satisfaction:
+            logging.info(f"Simulated user satisfaction: {satisfaction['avg_satisfaction']:.2f}/5.0")
         logging.info("="*50)
         
-        logging.info("Model evaluation completed successfully.")
-        logging.info("Visualizations saved to the 'plots' directory.")
-        
+        return True
+    
     except Exception as e:
         logging.error(f"Error in model evaluation: {e}")
         import traceback
         traceback.print_exc()
+        return False
 
 if __name__ == "__main__":
     evaluate_model() 

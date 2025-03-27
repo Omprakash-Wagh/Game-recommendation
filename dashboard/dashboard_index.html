@@ -1,57 +1,61 @@
-
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>Game Recommendation Dashboard</title>
-                <style>
-                    body { font-family: Arial, sans-serif; margin: 20px; }
-                    h1 { color: #333366; }
-                    .dashboard-container { display: flex; flex-wrap: wrap; }
-                    .dashboard-item { 
-                        width: 100%; 
-                        margin-bottom: 20px;
-                        border: 1px solid #ddd;
-                        border-radius: 5px;
-                        overflow: hidden;
-                    }
-                    .dashboard-item h2 {
-                        background-color: #f0f0f0;
-                        margin: 0;
-                        padding: 10px;
-                        font-size: 16px;
-                    }
-                    iframe {
-                        width: 100%;
-                        height: 500px;
-                        border: none;
-                    }
-                </style>
-            </head>
-            <body>
-                <h1>Game Recommendation Dashboard</h1>
-                <div class="dashboard-container">
-            
-                <div class="dashboard-item">
-                    <h2>Discounts</h2>
-                    <iframe src="interactive_discounts.html"></iframe>
-                </div>
-                
-                <div class="dashboard-item">
-                    <h2>Sales</h2>
-                    <iframe src="interactive_sales.html"></iframe>
-                </div>
-                
-                <div class="dashboard-item">
-                    <h2>Sale Worthiness</h2>
-                    <iframe src="interactive_sale_worthiness.html"></iframe>
-                </div>
-                
-                <div class="dashboard-item">
-                    <h2>Top Candidates</h2>
-                    <iframe src="interactive_top_candidates.html"></iframe>
-                </div>
-                
-                </div>
-            </body>
-            </html>
-            
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Recommendation Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333366; }
+        .dashboard-container { display: flex; flex-wrap: wrap; }
+        .dashboard-item { 
+            width: 100%; 
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .dashboard-item h2 {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Recommendation Dashboard</h1>
+    
+    <div style="margin-bottom: 20px; padding: 15px; background-color: #e6f7ff; border-left: 4px solid #1890ff; border-radius: 4px;">
+        <h2 style="margin-top: 0; color: #1890ff;">New Consolidated Dashboard Available!</h2>
+        <p>We've created an improved consolidated dashboard with better visualizations and fallback data.</p>
+        <p><a href="consolidated_dashboard.html" style="display: inline-block; padding: 10px 20px; background-color: #1890ff; color: white; text-decoration: none; border-radius: 4px; font-weight: bold;">Open Consolidated Dashboard</a></p>
+    </div>
+    <div class="dashboard-container">
+        
+        <div class="dashboard-item">
+            <h2>Discounts</h2>
+            <iframe src="interactive_discounts.html"></iframe>
+        </div>
+        
+        <div class="dashboard-item">
+            <h2>Sales</h2>
+            <iframe src="interactive_sales.html"></iframe>
+        </div>
+        
+        <div class="dashboard-item">
+            <h2>Sale Worthiness</h2>
+            <iframe src="interactive_sale_worthiness.html"></iframe>
+        </div>
+        
+        <div class="dashboard-item">
+            <h2>Top Candidates</h2>
+            <iframe src="interactive_top_candidates.html"></iframe>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -607,8 +607,16 @@ def main():
         # Create visualizations
         create_dashboard_visualizations(dashboard_data)
         
-        # Display interactive dashboard
-        display_interactive_dashboard()
+        # Open the dashboard in the browser
+        dashboard_path = os.path.join('dashboard', 'consolidated_dashboard.html')
+        if os.path.exists(dashboard_path):
+            webbrowser.open('file://' + os.path.abspath(dashboard_path))
+            logging.info("Dashboard opened in browser.")
+        else:
+            dashboard_path = os.path.join('dashboard', 'dashboard_index.html')
+            if os.path.exists(dashboard_path):
+                webbrowser.open('file://' + os.path.abspath(dashboard_path))
+                logging.info("Dashboard opened in browser.")
         
         logging.info("Dashboard generation complete.")
         
